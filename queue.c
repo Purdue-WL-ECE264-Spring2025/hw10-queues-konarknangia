@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+int is_solved(struct game_state state);  
+int generate_successors(struct game_state state, struct game_state neighbors[]);
+
 void enqueue(struct queue *q, struct game_state state) {
     uint64_t val = serialize(state);
     insert_at_tail(&q->data, val);
