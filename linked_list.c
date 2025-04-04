@@ -72,6 +72,7 @@ void free_list(struct linked_list list) {
     cur = next;
   }
 }
+
 // Utility function to help you debugging, do not modify
 void dump_list(FILE *fp, struct linked_list list) {
   fprintf(fp, "[ ");
