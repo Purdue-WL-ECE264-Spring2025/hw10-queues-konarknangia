@@ -71,6 +71,7 @@ void free_list(struct linked_list list) {
     free(cur);
     cur = next;
   }
+  list->head = NULL;
 }
 
 // Utility function to help you debugging, do not modify
