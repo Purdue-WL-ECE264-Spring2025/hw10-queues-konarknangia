@@ -64,7 +64,7 @@ size_t remove_from_tail(struct linked_list *list) {
   return val;
 }
 
-void free_list(struct linked_list *list) {
+void free_list(struct linked_list list) {
   struct list_node *current = list->head;
   struct list_node *next;
   
@@ -77,7 +77,7 @@ void free_list(struct linked_list *list) {
 }
 
 // Utility function to help you debugging, do not modify
-void dump_list(FILE *fp, struct linked_list *list) {
+void dump_list(FILE *fp, struct linked_list list) {
   fprintf(fp, "[ ");
   for (struct list_node *cur = list->head; cur != NULL; cur = cur->next) {
     fprintf(fp, "%zu ", cur->value);
