@@ -1,5 +1,7 @@
 #include "queue.h"
 #include "tile_game.h"
+#include <stdint.h>
+#include <stdlib.h>
 
 void enqueue(struct queue *q, struct game_state state) {
     uint64_t val = serialize(state);
