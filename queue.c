@@ -12,17 +12,12 @@ struct game_state dequeue(struct queue *q) {
 }
 
 int number_of_moves(struct game_state start) { 
-   struct queue q = {0};
-   enqueue(&q, start);
-
-  struct set *visited = create_set(); 
-  add_to_set(visited, serialize(start));
+  struct queue q = {0};
+  enqueue(&q, start);
 
   while (q.list.head != NULL) {
     struct game_state cur = dequeue(&q);
     if (is_solved(cur)) {
-      free_set(visited);
-      free_list(q.list);
       return cur.num_moves;
     }
 
@@ -31,14 +26,8 @@ int number_of_moves(struct game_state start) {
 
     for (int i = 0; i < count; ++i) {
       size_t next_val = serialize(neighbors[i]);
-      if (!set_contains(visited, next_val)) {
-        add_to_set(visited, next_val);
-        enqueue(&q, neighbors[i]);
-      }
+      enqueue(&q, neighbors[i]);
     }
   }
-
-  free_set(visited);
-  free_list(q.list);
   return -1;
 }
